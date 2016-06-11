@@ -8,15 +8,16 @@
 
 import Cocoa
 
-class ViewController: NSViewController, NSCollectionViewDelegate {
+class ViewController: NSViewController, NSCollectionViewDelegate, NSTextFieldDelegate {
     @IBOutlet weak var fontCollectionView: NSCollectionView!
+    @IBOutlet var sampleTextField: NSTextField!
     
     let fm = NSFontManager()
     var fontNames: [String] = []
     var fontSheetArray = NSMutableArray()
     
     override func viewDidLoad() {
-        // super.viewDidLoad()
+        super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         // load font list
@@ -26,7 +27,7 @@ class ViewController: NSViewController, NSCollectionViewDelegate {
         let itemPrototype = self.storyboard?.instantiateControllerWithIdentifier("cvi") as! NSCollectionViewItem
         fontCollectionView.itemPrototype = itemPrototype
         
-        print(fontNames.count)
+        sampleTextField.delegate = self
         
         for number in 0 ..< fontNames.count {
             let sheet = FontSheet(text: "aAあア亜", number: number, size: 20.0)
@@ -34,8 +35,6 @@ class ViewController: NSViewController, NSCollectionViewDelegate {
         }
         
         fontCollectionView.content = fontSheetArray as [AnyObject]
-        
-        super.viewDidLoad()
     }
 
     override var representedObject: AnyObject? {
@@ -43,7 +42,18 @@ class ViewController: NSViewController, NSCollectionViewDelegate {
         // Update the view, if already loaded.
         }
     }
-
-
+    
+    override func controlTextDidEndEditing(obj: NSNotification) {
+        let object = obj.object as! NSTextField
+        
+        // テキストを設定し直す
+        fontSheetArray = NSMutableArray()
+        for number in 0 ..< fontNames.count {
+            let sheet = FontSheet(text: object.stringValue, number: number, size: 20.0)
+            fontSheetArray.addObject(sheet)
+        }
+        
+        fontCollectionView.content = fontSheetArray as [AnyObject]
+    }
 }
 
