@@ -199,12 +199,12 @@
             <objects>
                 <collectionViewItem storyboardIdentifier="cvi" id="jQP-Sb-rT5" sceneMemberID="viewController">
                     <view key="view" id="nkh-TQ-FqK">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="120"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Qs4-kj-emh">
-                                <rect key="frame" x="20" y="78" width="160" height="22"/>
-                                <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Font Preview" placeholderString="あAaア" id="mjI-lt-ZXm">
+                                <rect key="frame" x="18" y="92" width="164" height="17"/>
+                                <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" title="Font Preview" placeholderString="あAaア" id="mjI-lt-ZXm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -228,10 +228,10 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="pg2-ki-ere" secondAttribute="bottom" constant="10" id="1Bf-XF-hAj"/>
+                            <constraint firstItem="Qs4-kj-emh" firstAttribute="centerY" secondItem="nkh-TQ-FqK" secondAttribute="centerY" id="B1j-4s-tfD"/>
                             <constraint firstItem="Qs4-kj-emh" firstAttribute="leading" secondItem="nkh-TQ-FqK" secondAttribute="leading" constant="20" id="CcK-rA-9X0"/>
                             <constraint firstItem="pg2-ki-ere" firstAttribute="leading" secondItem="nkh-TQ-FqK" secondAttribute="leading" constant="20" id="FWP-To-qnf"/>
                             <constraint firstAttribute="trailing" secondItem="pg2-ki-ere" secondAttribute="trailing" constant="20" id="UMD-nl-kMT"/>
-                            <constraint firstItem="Qs4-kj-emh" firstAttribute="top" secondItem="nkh-TQ-FqK" secondAttribute="top" constant="20" id="Wbw-cs-HCO"/>
                             <constraint firstAttribute="trailing" secondItem="Qs4-kj-emh" secondAttribute="trailing" constant="20" id="t0G-Uw-GE9"/>
                         </constraints>
                     </view>

@@ -17,7 +17,7 @@ class FontSheet: NSObject {
     init(text: String, number: Int, size: CGFloat) {
         self.text = text
         let fm = NSFontManager()
-        let fontFamilies = fm.availableFonts
+        let fontFamilies = fm.availableFontFamilies
         self.fontName = fontFamilies[number]
         self.font = NSFont(name: fontFamilies[number], size: size)!
         

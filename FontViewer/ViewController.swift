@@ -48,8 +48,13 @@ class ViewController: NSViewController, NSCollectionViewDelegate, NSTextFieldDel
         
         // テキストを設定し直す
         fontSheetArray = NSMutableArray()
+        var text = object.stringValue
+        if text == "" {
+            text = "aAあア亜"
+        }
+        
         for number in 0 ..< fontNames.count {
-            let sheet = FontSheet(text: object.stringValue, number: number, size: 20.0)
+            let sheet = FontSheet(text: text, number: number, size: 20.0)
             fontSheetArray.addObject(sheet)
         }
         
