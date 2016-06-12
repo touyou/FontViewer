@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController, NSCollectionViewDelegate, NSTextFieldDelegate {
+class ViewController: NSViewController, NSCollectionViewDelegate {
     @IBOutlet weak var fontCollectionView: NSCollectionView!
     @IBOutlet var sampleTextField: NSTextField!
     
@@ -42,7 +42,9 @@ class ViewController: NSViewController, NSCollectionViewDelegate, NSTextFieldDel
         // Update the view, if already loaded.
         }
     }
-    
+}
+
+extension ViewController: NSTextFieldDelegate  {
     override func controlTextDidEndEditing(obj: NSNotification) {
         let object = obj.object as! NSTextField
         
