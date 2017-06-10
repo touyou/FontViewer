@@ -24,20 +24,20 @@ class ViewController: NSViewController, NSCollectionViewDelegate {
         fontNames = fm.availableFontFamilies
         
         // set CollectionViewItem
-        let itemPrototype = self.storyboard?.instantiateControllerWithIdentifier("cvi") as! NSCollectionViewItem
+        let itemPrototype = self.storyboard?.instantiateController(withIdentifier: "cvi") as! NSCollectionViewItem
         fontCollectionView.itemPrototype = itemPrototype
         
         sampleTextField.delegate = self
         
         for number in 0 ..< fontNames.count {
             let sheet = FontSheet(text: "aAあア亜", number: number, size: 20.0)
-            fontSheetArray.addObject(sheet)
+            fontSheetArray.add(sheet)
         }
         
         fontCollectionView.content = fontSheetArray as [AnyObject]
     }
 
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
@@ -45,22 +45,27 @@ class ViewController: NSViewController, NSCollectionViewDelegate {
 }
 
 extension ViewController: NSTextFieldDelegate  {
-    override func controlTextDidEndEditing(obj: NSNotification) {
+    override func controlTextDidEndEditing(_ obj: Notification) {
         let object = obj.object as! NSTextField
         
         // テキストを設定し直す
-        fontSheetArray = NSMutableArray()
+//        fontSheetArray = NSMutableArray()
         var text = object.stringValue
         if text == "" {
             text = "aAあア亜"
         }
         
-        for number in 0 ..< fontNames.count {
-            let sheet = FontSheet(text: text, number: number, size: 20.0)
-            fontSheetArray.addObject(sheet)
+        for i in 0 ..< fontSheetArray.count {
+            (fontSheetArray[i] as! FontSheet).text = text
         }
         
-        fontCollectionView.content = fontSheetArray as [AnyObject]
+//        for number in 0 ..< fontNames.count {
+//            let sheet = FontSheet(text: text, number: number, size: 20.0)
+//            fontSheetArray.add(sheet)
+//        }
+        
+        fontCollectionView.content = fontSheetArray as! [Any]
+        fontCollectionView.reloadData()
     }
 }
 
